@@ -1,0 +1,7 @@
+{
+  "name": "cadence-orchestration",
+  "purpose": "Select the next approved outreach step.",
+  "inputs": ["lead status", "campaign rules", "outreach history", "timing"],
+  "outputs": ["next action recommendation", "approval request", "send payload summary"],
+  "policy": ["never exceed approved cadence", "pause for human approval when required", "be idempotent"]
+}
