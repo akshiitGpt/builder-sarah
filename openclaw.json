@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "agent": {
+    "name": "Sarah",
+    "slug": "sarah",
+    "description": "Outbound SDR-only agent for approved B2B campaigns.",
+    "identity": "Sarah is an outbound SDR-only campaign agent for approved B2B sales teams. She intakes qualified leads from approved sources, normalizes and deduplicates records, applies campaign fit checks, orchestrates approved outreach cadences, detects and classifies replies, coordinates Slack approvals and exceptions, books meetings in Calendar, and keeps Sheets and HubSpot aligned.",
+    "tone": [
+      "clear",
+      "concise",
+      "execution-oriented",
+      "professional",
+      "helpful",
+      "cautious when approval is required",
+      "status-first"
+    ]
+  },
+  "policy": {
+    "scope": "outbound_sdr_only",
+    "supported_channels": ["email", "slack"],
+    "reply_classifications": ["interested", "not_interested", "ooo", "needs_review"],
+    "lead_statuses": ["new", "qualified", "queued", "sent", "replied", "booked", "closed", "suppressed"],
+    "qualification_statuses": ["fit", "unqualified", "needs_review"],
+    "meeting_statuses": ["booked", "completed", "canceled", "no_show"],
+    "approval_required_for": ["sensitive_reply", "ambiguous_reply", "manual_override", "policy_exception", "send_outside_window"],
+    "source_of_truth": {
+      "contacts": "hubspot",
+      "campaign_tracking": "google_sheets",
+      "meeting_bookings": "calendar",
+      "outreach_events": "audit_log"
+    },
+    "conflict_resolution": {
+      "hubspot_over_sheets_for_contact_identity": true,
+      "sheets_over_hubspot_for_campaign_status": true,
+      "calendar_over_derived_meeting_state": true
+    }
+  },
+  "runtime": {
+    "node": "22+",
+    "reasoning_provider": "anthropic",
+    "control_plane": "slack",
+    "polling_interval_seconds": 60,
+    "retry_limit": 3,
+    "retry_backoff_ms": 2000,
+    "idempotency": true,
+    "audit_every_write": true
+  },
+  "channels": {
+    "email": {
+      "enabled": true,
+      "purpose": "approved outbound prospecting, follow-up, and reply handling"
+    },
+    "slack": {
+      "enabled": true,
+      "purpose": "approvals, exceptions, and concise operational updates"
+    }
+  },
+  "connectors": {
+    "gmail": {
+      "enabled": true,
+      "required": true,
+      "auth_env": ["GMAIL_CLIENT_ID", "GMAIL_CLIENT_SECRET", "GMAIL_REFRESH_TOKEN"],
+      "reads": ["threads", "replies", "delivery_signals", "labels"],
+      "writes": ["outreach_email", "labels", "follow_up_markers"]
+    },
+    "google_sheets": {
+      "enabled": true,
+      "required": true,
+      "auth_env": ["GOOGLE_SHEETS_CLIENT_ID", "GOOGLE_SHEETS_CLIENT_SECRET", "GOOGLE_SHEETS_REFRESH_TOKEN"],
+      "reads": ["lead_lists", "campaign_rows", "status_columns", "report_tabs"],
+      "writes": ["status_updates", "activity_logs", "summary_rows"]
+    },
+    "hubspot": {
+      "enabled": true,
+      "required": true,
+      "auth_env": ["HUBSPOT_PRIVATE_APP_TOKEN"],
+      "reads": ["contacts", "lifecycle_status", "engagement_history"],
+      "writes": ["contact_updates", "engagement_history", "qualification_state"]
+    },
+    "calendar": {
+      "enabled": true,
+      "required": true,
+      "auth_env": ["CALENDAR_CLIENT_ID", "CALENDAR_CLIENT_SECRET", "CALENDAR_REFRESH_TOKEN"],
+      "reads": ["availability", "event_details", "attendance_indicators"],
+      "writes": ["meeting_events", "confirmations", "outcome_timestamps"]
+    }
+  },
+  "skills": [
+    "lead-intake-normalization",
+    "lead-qualification",
+    "cadence-orchestration",
+    "reply-triage",
+    "meeting-booking",
+    "campaign-reporting"
+  ],
+  "triggers": [
+    "new-lead-intake",
+    "scheduled-outreach-cadences",
+    "reply-detection",
+    "calendar-booking-update",
+    "slack-approval-response"
+  ],
+  "storage": {
+    "state_dir": ".openclaw/state",
+    "data_dir": ".openclaw/data",
+    "logs_dir": ".openclaw/logs",
+    "audit_dir": ".openclaw/audit"
+  }
+}
