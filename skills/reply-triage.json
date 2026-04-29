@@ -1,0 +1,7 @@
+{
+  "name": "reply-triage",
+  "purpose": "Classify inbound Gmail replies and choose routing.",
+  "inputs": ["reply content", "thread history", "campaign context"],
+  "outputs": ["reply category", "suggested next step", "review flag"],
+  "policy": ["use approved labels only", "escalate ambiguous or sensitive replies", "preserve thread context"]
+}
