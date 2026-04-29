@@ -1,0 +1,8 @@
+{
+  "name": "gmail",
+  "required": true,
+  "auth_env": ["GMAIL_CLIENT_ID", "GMAIL_CLIENT_SECRET", "GMAIL_REFRESH_TOKEN"],
+  "reads": ["threads", "replies", "delivery_signals", "labels"],
+  "writes": ["approved_outreach_email", "labels", "follow_up_markers"],
+  "notes": "Use only for approved outbound prospecting, follow-up, and reply detection."
+}
