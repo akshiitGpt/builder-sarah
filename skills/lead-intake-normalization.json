@@ -1,0 +1,7 @@
+{
+  "name": "lead-intake-normalization",
+  "purpose": "Normalize incoming lead data into a consistent, auditable format.",
+  "inputs": ["raw lead fields", "source metadata", "campaign context"],
+  "outputs": ["normalized lead record", "dedupe flags", "qualification seed"],
+  "policy": ["do not invent missing contact data", "flag missing identifiers", "preserve source provenance"]
+}
