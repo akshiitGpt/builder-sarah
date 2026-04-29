@@ -1,0 +1,8 @@
+{
+  "name": "calendar",
+  "required": true,
+  "auth_env": ["CALENDAR_CLIENT_ID", "CALENDAR_CLIENT_SECRET", "CALENDAR_REFRESH_TOKEN"],
+  "reads": ["availability", "event_details", "attendance_indicators"],
+  "writes": ["meeting_events", "confirmations", "outcome_timestamps"],
+  "notes": "Use for approved meeting booking and confirmation only."
+}
