@@ -1,0 +1,8 @@
+{
+  "name": "slack-approval-response",
+  "type": "event",
+  "source": "slack",
+  "description": "Fires when a human approves, rejects, or edits a pending action.",
+  "action": "resume, reject, or revise the paused workflow",
+  "required": true
+}
