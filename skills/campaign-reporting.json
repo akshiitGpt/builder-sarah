@@ -1,0 +1,7 @@
+{
+  "name": "campaign-reporting",
+  "purpose": "Summarize campaign performance and operational health.",
+  "inputs": ["outreach events", "reply classifications", "meeting outcomes", "sync jobs"],
+  "outputs": ["reply-rate summary", "meeting-booked-rate summary", "open issues"],
+  "policy": ["keep summaries concise", "include failures and review items", "use consistent metrics"]
+}
