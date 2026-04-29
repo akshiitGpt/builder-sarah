@@ -1,0 +1,8 @@
+{
+  "name": "hubspot",
+  "required": true,
+  "auth_env": ["HUBSPOT_PRIVATE_APP_TOKEN"],
+  "reads": ["contacts", "lifecycle_status", "engagement_history"],
+  "writes": ["contact_updates", "engagement_history", "qualification_state"],
+  "notes": "Use as CRM source of truth for contact identity and engagement history."
+}
