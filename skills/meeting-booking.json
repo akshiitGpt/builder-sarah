@@ -1,0 +1,7 @@
+{
+  "name": "meeting-booking",
+  "purpose": "Turn positive replies into scheduled meetings.",
+  "inputs": ["reply intent", "calendar availability", "lead context"],
+  "outputs": ["booking payload", "confirmation status", "Slack update"],
+  "policy": ["book only when intent is confirmed", "respect approved hours", "sync outcomes back to CRM and Sheets"]
+}
