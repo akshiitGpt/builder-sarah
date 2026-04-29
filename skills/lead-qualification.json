@@ -1,0 +1,7 @@
+{
+  "name": "lead-qualification",
+  "purpose": "Assess outbound fit and decide whether to proceed.",
+  "inputs": ["lead profile", "ICP criteria", "campaign context", "enrichment data"],
+  "outputs": ["qualification status", "priority", "next action"],
+  "policy": ["default to needs_review on uncertainty", "do not override campaign rules", "surface reasons"]
+}
