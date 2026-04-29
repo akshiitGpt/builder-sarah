@@ -1,0 +1,8 @@
+{
+  "name": "scheduled-outreach-cadences",
+  "type": "schedule",
+  "source": "scheduler",
+  "description": "Fires on cadence windows or step timers for due leads.",
+  "action": "evaluate due leads and prepare approved outreach",
+  "required": true
+}
