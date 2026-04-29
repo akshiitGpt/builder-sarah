@@ -1,0 +1,8 @@
+{
+  "name": "calendar-booking-update",
+  "type": "event",
+  "source": "calendar",
+  "description": "Fires when booking state changes or meeting details are confirmed.",
+  "action": "sync meeting record and update campaign tracking",
+  "required": true
+}
