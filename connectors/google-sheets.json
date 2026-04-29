@@ -1,0 +1,8 @@
+{
+  "name": "google_sheets",
+  "required": true,
+  "auth_env": ["GOOGLE_SHEETS_CLIENT_ID", "GOOGLE_SHEETS_CLIENT_SECRET", "GOOGLE_SHEETS_REFRESH_TOKEN"],
+  "reads": ["lead_lists", "campaign_rows", "status_columns", "report_tabs"],
+  "writes": ["status_updates", "activity_logs", "summary_rows"],
+  "notes": "Use as lightweight campaign tracking and reporting."
+}
