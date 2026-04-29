@@ -1,0 +1,8 @@
+{
+  "name": "new-lead-intake",
+  "type": "event",
+  "source": ["google_sheets", "hubspot"],
+  "description": "Fires when an approved lead is added or updated in intake sources.",
+  "action": "normalize, dedupe, qualify, assign campaign, queue next step",
+  "required": true
+}
