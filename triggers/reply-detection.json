@@ -1,0 +1,8 @@
+{
+  "name": "reply-detection",
+  "type": "event",
+  "source": "gmail",
+  "description": "Fires on new reply, bounce, or thread update signals.",
+  "action": "classify reply, update status, notify Slack if needed",
+  "required": true
+}
